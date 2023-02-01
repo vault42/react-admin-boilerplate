@@ -1,23 +1,26 @@
 {
-  "name": "react-mantine-admin",
+  "name": "react-admin-boilerplate",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint --cache --ignore-path .gitignore ."
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@mantine/core": "^5.10.2",
     "@mantine/hooks": "^5.10.2",
     "@reduxjs/toolkit": "^1.9.2",
+    "@tanstack/react-query": "^4.24.4",
     "axios": "^1.3.0",
     "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.8.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.15",
