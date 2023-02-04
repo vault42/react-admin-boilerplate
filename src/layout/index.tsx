@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import {
   AppShell,
@@ -19,7 +19,6 @@ const Layout: FC = () => {
   const theme = useMantineTheme()
   const dispatch = useAppDispatch()
   const { navOpen } = useAppSelector((state) => state.global)
-  // const [opened, setOpened] = useState(false)
   return (
     <AppShell
       styles={{
@@ -32,16 +31,7 @@ const Layout: FC = () => {
       }}
       navbarOffsetBreakpoint='sm'
       asideOffsetBreakpoint='sm'
-      navbar={
-        <Navbar
-          p='md'
-          hiddenBreakpoint='sm'
-          hidden={!navOpen}
-          width={{ sm: 200, lg: 300 }}
-        >
-          <NavSideBar />
-        </Navbar>
-      }
+      navbar={<NavSideBar />}
       footer={
         <Footer height={60} p='md'>
           Application footer
