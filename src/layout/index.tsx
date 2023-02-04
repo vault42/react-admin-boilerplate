@@ -5,16 +5,21 @@ import {
   Navbar,
   Header,
   Footer,
-  Aside,
-  Text,
   MediaQuery,
   Burger,
   useMantineTheme
 } from '@mantine/core'
+import NavHeader from './NavHeader'
+import NavSideBar from './NavSideBar'
+import { useAppDispatch } from '@hooks/use-app-dispatch'
+import { useAppSelector } from '@hooks/use-app-selector'
+import { setNavOpen } from '@store/global-slice'
 
 const Layout: FC = () => {
   const theme = useMantineTheme()
-  const [opened, setOpened] = useState(false)
+  const dispatch = useAppDispatch()
+  const { navOpen } = useAppSelector((state) => state.global)
+  // const [opened, setOpened] = useState(false)
   return (
     <AppShell
       styles={{
@@ -31,18 +36,11 @@ const Layout: FC = () => {
         <Navbar
           p='md'
           hiddenBreakpoint='sm'
-          hidden={!opened}
+          hidden={!navOpen}
           width={{ sm: 200, lg: 300 }}
         >
-          <Text>Application navbar</Text>
+          <NavSideBar />
         </Navbar>
-      }
-      aside={
-        <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
-          <Aside p='md' hiddenBreakpoint='sm' width={{ sm: 200, lg: 300 }}>
-            <Text>Application sidebar</Text>
-          </Aside>
-        </MediaQuery>
       }
       footer={
         <Footer height={60} p='md'>
@@ -56,15 +54,15 @@ const Layout: FC = () => {
           >
             <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
               <Burger
-                opened={opened}
-                onClick={() => setOpened((o) => !o)}
+                opened={navOpen}
+                onClick={() => dispatch(setNavOpen(!navOpen))}
                 size='sm'
                 color={theme.colors.gray[6]}
                 mr='xl'
               />
             </MediaQuery>
 
-            <Text>Application header</Text>
+            <NavHeader />
           </div>
         </Header>
       }
