@@ -9,7 +9,7 @@ const App: FC = () => (
   <MantineProvider
     withGlobalStyles
     theme={{
-      fontFamily: 'monospace',
+      // fontFamily: 'monospace',
       primaryColor: 'cyan'
     }}
   >

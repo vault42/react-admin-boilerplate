@@ -1,10 +1,8 @@
 import { FC } from 'react'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import {
   AppShell,
-  Navbar,
   Header,
-  Footer,
   MediaQuery,
   Burger,
   useMantineTheme
@@ -32,11 +30,7 @@ const Layout: FC = () => {
       navbarOffsetBreakpoint='sm'
       asideOffsetBreakpoint='sm'
       navbar={<NavSideBar />}
-      footer={
-        <Footer height={60} p='md'>
-          Application footer
-        </Footer>
-      }
+      // footer={}
       header={
         <Header height={{ base: 50, md: 70 }} p='md'>
           <div
