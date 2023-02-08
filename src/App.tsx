@@ -8,10 +8,11 @@ import {
 } from '@mantine/core'
 import { useColorScheme, useLocalStorage } from '@mantine/hooks'
 import { Provider } from 'react-redux'
-import { store } from '@store'
+import { useAppSelector } from '@hooks/use-app-selector'
 
 const App: FC = () => {
   const preferredColorScheme = useColorScheme()
+  const { primaryColor } = useAppSelector((state) => state.global)
 
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'mantine-color-scheme',
@@ -32,14 +33,12 @@ const App: FC = () => {
         theme={{
           colorScheme: colorScheme,
           // fontFamily: 'monospace',
-          primaryColor: 'cyan'
+          primaryColor: primaryColor
         }}
       >
-        <Provider store={store}>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
-        </Provider>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
       </MantineProvider>
     </ColorSchemeProvider>
   )

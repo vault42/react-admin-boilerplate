@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit'
 
 interface IState {
   navOpen: boolean
+  primaryColor: string
 }
 
 const initialState: IState = {
-  navOpen: true
+  navOpen: true,
+  primaryColor: 'cyan'
 }
 
 export const globalSlice = createSlice({
@@ -14,9 +16,12 @@ export const globalSlice = createSlice({
   reducers: {
     setNavOpen: (state, { payload }) => {
       state.navOpen = payload
+    },
+    setPrimaryColor: (state, { payload }) => {
+      state.primaryColor = payload
     }
   }
 })
 
-export const { setNavOpen } = globalSlice.actions
+export const { setNavOpen, setPrimaryColor } = globalSlice.actions
 export default globalSlice.reducer
