@@ -10,6 +10,7 @@ import {
   IconLock
 } from '@tabler/icons-react'
 import LinksGroup from './LinksGroup'
+import UserLink from './UserLink'
 
 const mockdata = [
   { label: 'Dashboard', icon: IconGauge },
@@ -51,6 +52,9 @@ const NavSideBar: FC = () => {
     >
       <Navbar.Section grow component={ScrollArea}>
         <div className='py-2'>{links}</div>
+      </Navbar.Section>
+      <Navbar.Section>
+        <UserLink />
       </Navbar.Section>
     </Navbar>
   )

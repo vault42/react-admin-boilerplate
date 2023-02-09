@@ -7,7 +7,6 @@ import {
   MantineProvider
 } from '@mantine/core'
 import { useColorScheme, useLocalStorage } from '@mantine/hooks'
-import { Provider } from 'react-redux'
 import { useAppSelector } from '@hooks/use-app-selector'
 
 const App: FC = () => {

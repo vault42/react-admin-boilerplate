@@ -52,14 +52,20 @@ const LinksGroup: FC<LinksGroupProps> = ({
 
   return (
     <>
+      {/* todo: use tailwindcss */}
       <UnstyledButton
         onClick={() => setOpened((o) => !o)}
-        className={cn(
-          'block w-full px-2 py-2 text-sm rounded-sm',
-          theme.colorScheme === 'dark'
-            ? 'text-gray-50 hover:bg-gray-700 hover:text-white'
-            : 'text-black hover:bg-gray-100 hover:text-black'
-        )}
+        className={cn('block w-full px-2 py-2 text-sm rounded-sm')}
+        sx={{
+          color:
+            theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
+          '&:hover': {
+            backgroundColor:
+              theme.colorScheme === 'dark'
+                ? theme.colors.dark[6]
+                : theme.colors.gray[0]
+          }
+        }}
       >
         <Group position='apart' spacing={0}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>

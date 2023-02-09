@@ -3,7 +3,7 @@ import ColorControl from '@components/ColorControl'
 import { useAppDispatch } from '@hooks/use-app-dispatch'
 import { useAppSelector } from '@hooks/use-app-selector'
 import { setPrimaryColor } from '@store/global-slice'
-import ToggleTheme from './ToggleTheme'
+import ToggleTheme from '../components/ToggleTheme'
 
 const NavHeader: FC = () => {
   const dispatch = useAppDispatch()
