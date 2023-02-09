@@ -1,10 +1,12 @@
-import { Button } from '@mantine/core'
 import { FC } from 'react'
+import { Button } from '@mantine/core'
+import { useTranslation } from 'react-i18next'
 
 const DashboardPage: FC = () => {
+  const { t, i18n } = useTranslation()
   return (
     <div>
-      <Button>确认</Button>
+      <Button>{t('button.confirm')}</Button>
     </div>
   )
 }
