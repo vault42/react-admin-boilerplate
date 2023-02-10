@@ -1,4 +1,4 @@
-import { IconChevronRight, IconChevronLeft } from '@tabler/icons-react'
+import { IconChevronRight } from '@tabler/icons-react'
 import {
   UnstyledButton,
   Group,
@@ -8,9 +8,11 @@ import {
   useMantineTheme
 } from '@mantine/core'
 import cn from 'classnames'
+import { useNavigate } from 'react-router-dom'
 
 const UserLink = () => {
   const theme = useMantineTheme()
+  const navigate = useNavigate()
 
   return (
     <Box
@@ -50,7 +52,12 @@ const UserLink = () => {
               ahorsefighter@gmail.com
             </Text>
           </Box>
-          <IconChevronRight size={18} />
+          <IconChevronRight
+            size={18}
+            onClick={() => {
+              navigate('/user')
+            }}
+          />
         </Group>
       </UnstyledButton>
     </Box>

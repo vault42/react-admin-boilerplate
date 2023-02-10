@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 const NotFound: FC = () => {
-  return <div>index</div>
+  return <div>Not Found Page</div>
 }
 
 export default NotFound

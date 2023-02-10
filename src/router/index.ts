@@ -21,6 +21,26 @@ const routes: IRoute[] = [
         auth: false,
         component: lazy(() => import('@pages/dashboard'))
       },
+      {
+        path: '/user',
+        auth: false,
+        component: lazy(() => import('@pages/user'))
+      },
+      {
+        path: '/setting',
+        auth: false,
+        component: lazy(() => import('@pages/setting'))
+      },
+      {
+        path: '/dataflow',
+        auth: false,
+        component: lazy(() => import('@pages/dataflow'))
+      },
+      {
+        path: '/datagrid',
+        auth: false,
+        component: lazy(() => import('@pages/datagrid'))
+      },
 
       {
         path: '*',

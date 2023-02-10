@@ -6,7 +6,13 @@ const DashboardPage: FC = () => {
   const { t, i18n } = useTranslation()
   return (
     <div>
-      <Button>{t('button.confirm')}</Button>
+      <Button
+        onClick={() => {
+          i18n.changeLanguage('en')
+        }}
+      >
+        {t('button.confirm')}
+      </Button>
     </div>
   )
 }
