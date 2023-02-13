@@ -33,9 +33,7 @@ const Layout: FC = () => {
       // footer={}
       header={
         <Header height={{ base: 50, md: 70 }} p='md'>
-          <div
-            style={{ display: 'flex', alignItems: 'center', height: '100%' }}
-          >
+          <div className='flex items-center h-full'>
             <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
               <Burger
                 opened={navOpen}
