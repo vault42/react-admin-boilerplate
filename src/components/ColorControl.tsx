@@ -44,6 +44,7 @@ const ColorControl: FC<IProps> = ({ onChange, value }) => {
       width={152}
       position='bottom-end'
       withArrow
+      zIndex={99}
     >
       <Popover.Target>
         <ActionIcon
