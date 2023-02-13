@@ -31,7 +31,7 @@ const links = [
     ]
   },
   { label: 'Contracts', icon: IconFileAnalytics },
-  { label: 'Settings', icon: IconAdjustments },
+  { label: 'Settings', icon: IconAdjustments, link: '/setting' },
   {
     label: 'Security',
     icon: IconLock,
