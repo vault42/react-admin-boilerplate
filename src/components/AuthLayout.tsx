@@ -2,11 +2,10 @@ import { useMantineTheme } from '@mantine/core'
 import { FC, ReactNode } from 'react'
 
 interface IProps {
-  imgPath: string
   children: ReactNode
 }
 
-const AuthLayout: FC<IProps> = ({ imgPath, children }) => {
+const AuthLayout: FC<IProps> = ({ children }) => {
   const theme = useMantineTheme()
 
   return (
@@ -19,7 +18,15 @@ const AuthLayout: FC<IProps> = ({ imgPath, children }) => {
             : theme.colors.gray[0]
       }}
     >
-      <div className='flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800'>
+      <div
+        className='flex-1 h-full max-w-xl mx-auto rounded-md overflow-hidden p-8'
+        style={{
+          backgroundColor:
+            theme.colorScheme === 'dark'
+              ? theme.colors.dark[7]
+              : theme.colors.gray[2]
+        }}
+      >
         {children}
       </div>
     </div>

@@ -7,7 +7,10 @@ import svgr from 'vite-plugin-svgr'
 export default defineConfig({
   plugins: [react(), svgr()],
   server: {
-    hmr: true
+    hmr: true,
+    proxy: {
+      '/api': 'http://localhost:3001'
+    }
   },
   resolve: {
     alias: {

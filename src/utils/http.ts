@@ -8,8 +8,9 @@ import axios, {
 
 interface ApiResponse<T> {
   code: number
+  success: boolean
   data: T
-  message: string
+  message?: string
 }
 
 class Request {
