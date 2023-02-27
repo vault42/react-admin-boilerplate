@@ -1,6 +1,12 @@
 import { ColorScheme } from '@mantine/core'
 
-export function Logo({ colorScheme }: { colorScheme: ColorScheme }) {
+export function Logo({
+  colorScheme,
+  primaryColor
+}: {
+  colorScheme: ColorScheme
+  primaryColor: string
+}) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -9,7 +15,7 @@ export function Logo({ colorScheme }: { colorScheme: ColorScheme }) {
       width={100}
     >
       <path
-        fill='#339AF0'
+        fill={primaryColor}
         d='M162.162 81.5c0-45.011-36.301-81.5-81.08-81.5C36.301 0 0 36.489 0 81.5 0 126.51 36.301 163 81.081 163s81.081-36.49 81.081-81.5z'
       />
       <path

@@ -32,7 +32,7 @@ const Layout: FC = () => {
       navbar={<NavSideBar />}
       // footer={}
       header={
-        <Header height={{ base: 50, md: 70 }} p='md'>
+        <Header height={{ base: 48, md: 64 }} p='md'>
           <div className='flex items-center h-full'>
             <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
               <Burger

@@ -14,7 +14,7 @@ const NavHeader: FC = () => {
 
   return (
     <div className='w-full flex justify-between'>
-      <Logo colorScheme={colorScheme} />
+      <Logo colorScheme={colorScheme} primaryColor={primaryColor} />
       <Group>
         <ColorControl
           onChange={(color) => {
