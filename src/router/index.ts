@@ -52,7 +52,12 @@ const routes: IRoute[] = [
   {
     path: '/login',
     auth: false,
-    component: lazy(() => import('@pages/sign'))
+    component: lazy(() => import('@pages/login'))
+  },
+  {
+    path: '/signup',
+    auth: false,
+    component: lazy(() => import('@pages/signup'))
   }
 ]
 
