@@ -1,24 +1,14 @@
 import { FC } from 'react'
 import { Outlet } from 'react-router-dom'
-import {
-  AppShell,
-  Header,
-  MediaQuery,
-  Burger,
-  useMantineTheme
-} from '@mantine/core'
+import { AppShell, useMantineTheme } from '@mantine/core'
 import NavHeader from './NavHeader'
 import NavSideBar from './NavSideBar'
-import { useAppDispatch } from '@hooks/use-app-dispatch'
-import { useAppSelector } from '@hooks/use-app-selector'
-import { setNavOpen } from '@store/global-slice'
 
 const Layout: FC = () => {
   const theme = useMantineTheme()
-  const dispatch = useAppDispatch()
-  const { navOpen } = useAppSelector((state) => state.global)
   return (
     <AppShell
+      layout='alt'
       styles={{
         main: {
           background:
@@ -29,27 +19,9 @@ const Layout: FC = () => {
       }}
       navbarOffsetBreakpoint='sm'
       asideOffsetBreakpoint='sm'
+      fixed
       navbar={<NavSideBar />}
-      // footer={}
-      header={
-        <Header height={{ base: 50, md: 70 }} p='md'>
-          <div
-            style={{ display: 'flex', alignItems: 'center', height: '100%' }}
-          >
-            <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
-              <Burger
-                opened={navOpen}
-                onClick={() => dispatch(setNavOpen(!navOpen))}
-                size='sm'
-                color={theme.colors.gray[6]}
-                mr='xl'
-              />
-            </MediaQuery>
-
-            <NavHeader />
-          </div>
-        </Header>
-      }
+      header={<NavHeader />}
     >
       <Outlet />
     </AppShell>
