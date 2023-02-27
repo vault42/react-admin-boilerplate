@@ -29,19 +29,20 @@ const NavSideBar: FC = () => {
       hidden={!navOpen}
       width={{ sm: 250, lg: 300 }}
     >
-      <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
-        <div className='h-[48px] p-4 flex items-center'>
+      <div className='h-[48px] md:h-0 p-4 md:p-0 flex items-center'>
+        <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
           <Burger
             opened={navOpen}
             onClick={() => dispatch(setNavOpen(!navOpen))}
             size='sm'
             color={theme.colors.gray[6]}
           />
-        </div>
-      </MediaQuery>
+        </MediaQuery>
+      </div>
+
       <div className='h-full flex flex-col px-4 pb-4'>
-        <Navbar.Section px={8}>
-          <Group position='apart'>
+        <Navbar.Section>
+          <Group position='apart' className='h-[48px] p-4'>
             <Logo colorScheme={colorScheme} primaryColor={primaryColor} />
             <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
           </Group>

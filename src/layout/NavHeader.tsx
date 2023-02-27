@@ -20,7 +20,7 @@ const NavHeader: FC = () => {
   const { primaryColor } = useAppSelector((state) => state.global)
 
   return (
-    <Header height={{ base: 48, md: 70 }} p='md'>
+    <Header height={{ base: 48 }} p='md'>
       <div className='flex items-center w-ful h-full'>
         <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
           <Burger
