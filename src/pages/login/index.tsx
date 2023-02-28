@@ -1,11 +1,19 @@
 import { login, LoginParams } from '@api/auth'
 import AuthLayout from '@components/AuthLayout'
 import { useAppDispatch } from '@hooks/use-app-dispatch'
-import { Box, Button, Group, PasswordInput, TextInput } from '@mantine/core'
+import {
+  Box,
+  Button,
+  Group,
+  PasswordInput,
+  TextInput,
+  Text
+} from '@mantine/core'
 import { useForm } from '@mantine/form'
 import { setToken } from '@store/auth-slice'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 type Input = {
   email: string
@@ -14,6 +22,7 @@ type Input = {
 
 const LoginPage = () => {
   const dispath = useAppDispatch()
+  const navigate = useNavigate()
 
   const form = useForm({
     initialValues: {
@@ -34,16 +43,14 @@ const LoginPage = () => {
         if (data.success) {
           dispath(setToken(data.data.access_token))
           toast.success('login success!')
+          navigate('/')
         }
       }
     }
   )
 
   const handleSubmit = (values: Input) => {
-    console.log(234444, values)
-    // toast('Logining')
     mutate(values)
-    // dispath(handleLogin(values))
   }
 
   return (
@@ -67,6 +74,14 @@ const LoginPage = () => {
             <Button fullWidth type='submit' loading={isLoading}>
               Login
             </Button>
+            <Text
+              className='text-sm cursor-pointer hover:underline'
+              onClick={() => {
+                navigate('/signup')
+              }}
+            >
+              Create account
+            </Text>
           </Group>
         </form>
       </Box>

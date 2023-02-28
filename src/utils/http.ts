@@ -30,7 +30,7 @@ class Request {
     this.instance.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
         const token = localStorage.getItem('token')
-        config.headers['Authorization'] = token
+        config.headers['Authorization'] = `Bearer ${token}`
         return config
       },
       (err: any) => {

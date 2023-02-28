@@ -1,4 +1,4 @@
-import { IconChevronRight } from '@tabler/icons-react'
+import { IconChevronRight, IconLogout } from '@tabler/icons-react'
 import {
   UnstyledButton,
   Group,
@@ -7,12 +7,16 @@ import {
   Box,
   useMantineTheme
 } from '@mantine/core'
-import cn from 'classnames'
 import { useNavigate } from 'react-router-dom'
+import { useAppSelector } from '@hooks/use-app-selector'
+import { useAppDispatch } from '@hooks/use-app-dispatch'
+import { handleLogout } from '@store/auth-slice'
 
 const UserLink = () => {
+  const dispatch = useAppDispatch()
   const theme = useMantineTheme()
   const navigate = useNavigate()
+  const { profile } = useAppSelector((state) => state.auth)
 
   return (
     <Box
@@ -26,7 +30,7 @@ const UserLink = () => {
       }}
     >
       <UnstyledButton
-        className={cn('block w-full rounded-t')}
+        className='block w-full rounded'
         sx={{
           padding: theme.spacing.xs,
           color:
@@ -46,10 +50,10 @@ const UserLink = () => {
           />
           <Box sx={{ flex: 1 }}>
             <Text size='sm' weight={500}>
-              Amy Horsefighter
+              {profile?.username}
             </Text>
             <Text color='dimmed' size='xs'>
-              ahorsefighter@gmail.com
+              {profile?.email}
             </Text>
           </Box>
           <IconChevronRight
@@ -59,6 +63,26 @@ const UserLink = () => {
             }}
           />
         </Group>
+      </UnstyledButton>
+      <UnstyledButton
+        className='w-full flex items-center no-underline text-sm rounded'
+        sx={{
+          padding: theme.spacing.xs,
+          color:
+            theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
+          '&:hover': {
+            backgroundColor:
+              theme.colorScheme === 'dark'
+                ? theme.colors.dark[6]
+                : theme.colors.gray[0]
+          }
+        }}
+        onClick={() => {
+          dispatch(handleLogout())
+        }}
+      >
+        <IconLogout className='mr-4' stroke={1.5} />
+        <span>Logout</span>
       </UnstyledButton>
     </Box>
   )

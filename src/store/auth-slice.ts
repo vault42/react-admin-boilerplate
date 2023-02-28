@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getProfile, login } from '@api/auth'
+import { getProfile } from '@api/auth'
 import { IProfile } from '@types'
 
 interface IState {
@@ -7,14 +7,6 @@ interface IState {
   token: string | null
   profile: IProfile | null
 }
-
-// export const handleLogin = createAsyncThunk(
-//   'login',
-//   async ({ email, password }: any) => {
-//     const data = await login(email, password)
-//     return data
-//   }
-// )
 
 export const handleProfile = createAsyncThunk('user-info', async () => {
   const data = await getProfile()
@@ -43,23 +35,6 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // .addCase(handleLogin.pending, (state) => {
-      //   state.loading = true
-      // })
-      // .addCase(handleLogin.fulfilled, (state, { payload }) => {
-      //   console.log(8888111, payload)
-
-      //   if (payload.success) {
-      //     console.log('login success')
-      //     state.token = payload.data.access_token
-      //     localStorage.setItem('token', payload.data.access_token)
-      //   }
-      //   state.loading = false
-      // })
-      // .addCase(handleLogin.rejected, (state) => {
-      //   console.log('error')
-      //   state.loading = false
-      // })
       .addCase(handleProfile.pending, (state) => {
         state.loading = true
       })

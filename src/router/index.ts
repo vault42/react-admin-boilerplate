@@ -13,35 +13,34 @@ export interface IRoute {
 const routes: IRoute[] = [
   {
     path: '/',
-    auth: false,
+    auth: true,
     component: lazy(() => import('@layout')),
     children: [
       {
         path: '/',
-        auth: false,
+        auth: true,
         component: lazy(() => import('@pages/dashboard'))
       },
       {
         path: '/user',
-        auth: false,
+        auth: true,
         component: lazy(() => import('@pages/user'))
       },
       {
         path: '/setting',
-        auth: false,
+        auth: true,
         component: lazy(() => import('@pages/setting'))
       },
       {
         path: '/dataflow',
-        auth: false,
+        auth: true,
         component: lazy(() => import('@pages/dataflow'))
       },
       {
         path: '/datagrid',
-        auth: false,
+        auth: true,
         component: lazy(() => import('@pages/datagrid'))
       },
-
       {
         path: '*',
         auth: false,

@@ -9,6 +9,7 @@ import {
 import { useColorScheme, useLocalStorage } from '@mantine/hooks'
 import { useAppSelector } from '@hooks/use-app-selector'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { AuthProvider } from '@router/helper'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,9 +46,11 @@ const App: FC = () => {
         }}
       >
         <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
+          <AuthProvider>
+            <BrowserRouter>
+              <Router />
+            </BrowserRouter>
+          </AuthProvider>
         </QueryClientProvider>
       </MantineProvider>
     </ColorSchemeProvider>

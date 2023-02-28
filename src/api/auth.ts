@@ -10,16 +10,13 @@ export const login = async (params: LoginParams) => {
   return data
 }
 
-export const register = async (
-  email: string,
-  password: string,
+export type RegisterParams = {
+  email: string
+  password: string
   username: string
-) => {
-  const { data } = await http.post('auth/register', {
-    email,
-    password,
-    username
-  })
+}
+export const register = async (params: RegisterParams) => {
+  const { data } = await http.post('auth/register', params)
   return data
 }
 
