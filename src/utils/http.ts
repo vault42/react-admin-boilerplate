@@ -5,6 +5,7 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig
 } from 'axios'
+import toast from 'react-hot-toast'
 
 interface ApiResponse<T> {
   code: number
@@ -41,8 +42,8 @@ class Request {
       (res: AxiosResponse) => {
         if (res.data.code) {
           const data = res.data as ApiResponse<any>
-          if (data.code !== 200) {
-            console.warn('x')
+          if (data.code !== 201) {
+            data.message && toast.error(data.message)
           }
           return res
         }
@@ -51,12 +52,11 @@ class Request {
       (err: AxiosError) => {
         if (err.response) {
           const data = err.response.data as ApiResponse<any>
+          data.message && toast.error(data.message)
           switch (err.response.status) {
             case 400:
-              console.error(data.message)
               break
             case 401:
-              console.error(`当前操作没有权限！`)
               break
             case 403:
               console.warn(`当前没有权限访问，请重新登录！`)

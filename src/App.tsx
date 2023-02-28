@@ -8,6 +8,15 @@ import {
 } from '@mantine/core'
 import { useColorScheme, useLocalStorage } from '@mantine/hooks'
 import { useAppSelector } from '@hooks/use-app-selector'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false
+    }
+  }
+})
 
 const App: FC = () => {
   const preferredColorScheme = useColorScheme()
@@ -35,9 +44,11 @@ const App: FC = () => {
           primaryColor: primaryColor
         }}
       >
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </QueryClientProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   )

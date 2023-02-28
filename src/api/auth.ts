@@ -1,12 +1,12 @@
 import { IProfile } from '@types'
 import http from '@utils/http'
 
-export const login = async (email: string, password: string) => {
-  const { data } = await http.post<{ access_token: string }>('auth/login', {
-    email,
-    password
-  })
-  console.log('wtf', data)
+export type LoginParams = { email: string; password: string }
+export const login = async (params: LoginParams) => {
+  const { data } = await http.post<{ access_token: string }>(
+    'auth/login',
+    params
+  )
   return data
 }
 

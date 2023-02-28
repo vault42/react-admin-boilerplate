@@ -1,8 +1,11 @@
+import { login, LoginParams } from '@api/auth'
 import AuthLayout from '@components/AuthLayout'
 import { useAppDispatch } from '@hooks/use-app-dispatch'
 import { Box, Button, Group, PasswordInput, TextInput } from '@mantine/core'
 import { useForm } from '@mantine/form'
-import { handleLogin } from '@store/auth-slice'
+import { setToken } from '@store/auth-slice'
+import { useMutation } from '@tanstack/react-query'
+import toast from 'react-hot-toast'
 
 type Input = {
   email: string
@@ -24,9 +27,23 @@ const LoginPage = () => {
     }
   })
 
+  const { isLoading, mutate } = useMutation(
+    (params: LoginParams) => login(params),
+    {
+      onSuccess: (data) => {
+        if (data.success) {
+          dispath(setToken(data.data.access_token))
+          toast.success('login success!')
+        }
+      }
+    }
+  )
+
   const handleSubmit = (values: Input) => {
     console.log(234444, values)
-    dispath(handleLogin(values))
+    // toast('Logining')
+    mutate(values)
+    // dispath(handleLogin(values))
   }
 
   return (
@@ -47,7 +64,7 @@ const LoginPage = () => {
             {...form.getInputProps('password')}
           />
           <Group position='center' mt={36}>
-            <Button fullWidth type='submit'>
+            <Button fullWidth type='submit' loading={isLoading}>
               Login
             </Button>
           </Group>
