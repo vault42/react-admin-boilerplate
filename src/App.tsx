@@ -23,7 +23,19 @@ const App: FC = () => {
   const { primaryColor } = useAppSelector((state) => state.global)
 
   return (
-    <ConfigProvider locale={zhCN}>
+    <ConfigProvider
+      locale={zhCN}
+      theme={{
+        token: {
+          colorPrimary: '#1389fd'
+        },
+        components: {
+          Layout: {
+            colorBgHeader: '#ffffff'
+          }
+        }
+      }}
+    >
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <BrowserRouter>
