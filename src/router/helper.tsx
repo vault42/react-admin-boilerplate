@@ -1,5 +1,5 @@
 import { createContext, FC, useContext, useEffect, useState } from 'react'
-import { toast } from 'react-hot-toast'
+import { message } from 'antd'
 import jwtDecode from 'jwt-decode'
 import { useAppDispatch } from '@hooks/use-app-dispatch'
 import { useAppSelector } from '@hooks/use-app-selector'
@@ -26,13 +26,13 @@ const useAuth = () => {
       const decoded = jwtDecode(token) as any
       const exp = decoded.exp
       if (now > exp) {
-        toast.error('登录过期！')
+        message.error('登录过期！')
         dispath(handleLogout())
       } else {
         setAuthed(true)
       }
     } else {
-      setAuthed(false)
+      setAuthed(true)
     }
   }, [dispath, token])
 

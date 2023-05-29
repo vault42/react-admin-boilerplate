@@ -5,7 +5,7 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig
 } from 'axios'
-import toast from 'react-hot-toast'
+import { message } from 'antd'
 
 interface ApiResponse<T> {
   code: number
@@ -43,7 +43,7 @@ class Request {
         if (res.data.code) {
           const data = res.data as ApiResponse<any>
           if (data.code !== 201) {
-            data.message && toast.error(data.message)
+            data.message && message.error(data.message)
           }
           return res
         }
@@ -52,7 +52,7 @@ class Request {
       (err: AxiosError) => {
         if (err.response) {
           const data = err.response.data as ApiResponse<any>
-          data.message && toast.error(data.message)
+          data.message && message.error(data.message)
           switch (err.response.status) {
             case 400:
               break

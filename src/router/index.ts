@@ -13,7 +13,7 @@ export interface IRoute {
 const routes: IRoute[] = [
   {
     path: '/',
-    auth: true,
+    auth: false,
     component: lazy(() => import('@layout')),
     children: [
       {
