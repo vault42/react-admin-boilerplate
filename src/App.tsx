@@ -27,7 +27,7 @@ const App: FC = () => {
       locale={zhCN}
       theme={{
         token: {
-          colorPrimary: '#1389fd'
+          colorPrimary: '#165dff'
         },
         components: {
           Layout: {
