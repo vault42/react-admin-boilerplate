@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import { IRoute } from '@router'
+import ProgressBar from '@components/ProgressBar'
 import { AuthRequired } from './helper'
 
 export const generateRouter = (routes: IRoute[]) => {
@@ -8,7 +9,7 @@ export const generateRouter = (routes: IRoute[]) => {
       route.children = generateRouter(route.children)
     }
     route.element = (
-      <Suspense fallback={<div />}>
+      <Suspense fallback={<ProgressBar />}>
         {route.auth ? (
           <AuthRequired>
             <route.component />
